@@ -9,7 +9,9 @@ function isArrayOf<T>(value: unknown, guard: (item: unknown) => item is T): valu
 }
 
 export function isSource(val: unknown): val is Source {
-    return isRecord(val) && typeof val.id === 'string' && typeof val.name === 'string';
+    return (
+        isRecord(val) && typeof val.id === 'string' && typeof val.name === 'string' && typeof val.language === 'string'
+    );
 }
 
 export function isSourcesResponse(val: unknown): val is SourcesResponse {

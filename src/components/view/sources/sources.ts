@@ -4,6 +4,29 @@ import './sources.css';
 
 class Sources {
     draw(data: Source[]): void {
+        const select = document.querySelector('#language-filter');
+        if (!(select instanceof HTMLSelectElement)) {
+            throw new Error('Language filter was not found');
+        }
+
+        const languages = [...new Set(data.map((source) => source.language))].sort();
+        const options = document.createDocumentFragment();
+        for (const language of ['all', ...languages]) {
+            const option = document.createElement('option');
+            option.value = language;
+            option.textContent = language.toUpperCase();
+            options.append(option);
+        }
+
+        select.replaceChildren(options);
+        select.disabled = false;
+        select.onchange = () => {
+            this.drawSources(select.value === 'all' ? data : data.filter((source) => source.language === select.value));
+        };
+        this.drawSources(data);
+    }
+
+    private drawSources(data: Source[]): void {
         if (!data.every((el) => isSource(el))) {
             console.warn('Data is not a Source array', data);
             return;

@@ -1,4 +1,5 @@
 export interface Source {
+    language: string;
     id: string;
     name: string;
 }

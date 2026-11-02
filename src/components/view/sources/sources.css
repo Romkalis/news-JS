@@ -1,7 +1,6 @@
 .sources {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     width: 100%;
     overflow: auto;
     align-items: center;
@@ -34,4 +33,24 @@
     font-size: clamp(0.7em, 2vw, 1em);
     font-weight: 400;
     white-space: nowrap;
+}
+
+.languages {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 6px;
+}
+.language__select {
+    padding: 8px 12px;
+    border: 2px solid #30c5ff;
+    background: #17181c;
+    color: #70d6ff;
+    font: inherit;
+    cursor: pointer;
+}
+.language__select:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
 }
