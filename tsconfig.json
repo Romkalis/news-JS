@@ -1,10 +1,12 @@
 {
     "compilerOptions": {
-        // File Layout
-        // "rootDir": "./src",
-        // "outDir": "./dist",
+        // Migration Options
+        "allowJs": true,
+        "checkJs": false,
 
-        "module": "nodenext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        
         "target": "es2020",
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "types": [],
