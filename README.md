@@ -35,3 +35,5 @@ Run `npm run deploy` to build locally and push only `dist/` to `gh-pages`. In re
 Expected site URL: https://romkalis.github.io/news-JS/
 
 GitHub still uses its internal Pages deployment workflow for branch publishing; this setup does not require a custom workflow file.
+
+The deploy command uses the RSSchool proxy `https://rss-news-api.onrender.com/` specified in the assignment. Local development uses `API_URL` from `.env`. The same NewsAPI key is sent to the course proxy.

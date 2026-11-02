@@ -41,7 +41,10 @@ const baseConfig = {
     ],
 };
 
-module.exports = ({ mode }) => {
+module.exports = ({ mode, deploy }) => {
+    if (deploy) {
+        process.env.API_URL = 'https://rss-news-api.onrender.com/';
+    }
     const isProductionMode = mode === 'prod';
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
 

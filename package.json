@@ -9,7 +9,7 @@
         "lint": "eslint . --ext .ts",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "predeploy": "npm run build",
+        "predeploy": "npm run build -- --env deploy=true",
         "deploy": "gh-pages -d dist --nojekyll -m \"chore: publish GitHub Pages build\""
     },
     "repository": {
