@@ -27,3 +27,11 @@ Development branch: `migration-js-ts`. Open the cross-check pull request against
 ## Manual verification
 
 Check sources and articles, keyboard selection, active source indication, missing images and browser console errors. Check viewport widths of 320, 640, 1024 and 1920 pixels, long headlines and source names, and network failure handling.
+
+## GitHub Pages without a custom Actions workflow
+
+Run `npm run deploy` to build locally and push only `dist/` to `gh-pages`. In repository Settings → Pages, select **Deploy from a branch**, branch **gh-pages**, folder **/ (root)**, then Save. Repeat `npm run deploy` after source updates. Development stays in `migration-js-ts`; `main` stays unchanged.
+
+Expected site URL: https://romkalis.github.io/news-JS/
+
+GitHub still uses its internal Pages deployment workflow for branch publishing; this setup does not require a custom workflow file.
