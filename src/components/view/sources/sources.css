@@ -1,8 +1,8 @@
 .sources {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
-    height: 120px;
     overflow: auto;
     align-items: center;
     font:
@@ -15,8 +15,8 @@
     border: 2px solid #30c5ff;
     font: inherit;
     line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
+    margin: 0.3em;
+    padding: 0.3em 0.5em;
     color: #70d6ff;
     transition: 0.25s;
     cursor: pointer;
@@ -31,6 +31,7 @@
 }
 
 .source__item-name {
+    font-size: clamp(0.7em, 2vw, 1em);
     font-weight: 400;
     white-space: nowrap;
 }
