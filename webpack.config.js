@@ -24,11 +24,15 @@ const baseConfig = {
         extensions: ['.ts', '.js'],
     },
     output: {
-        filename: 'index.js',
+        filename: 'index.[contenthash].js',
+        publicPath: './',
         path: path.resolve(__dirname, './dist'),
     },
     plugins: [
-        new DotenvWebpackPlugin(),
+        new DotenvWebpackPlugin({
+            systemvars: true,
+            safe: true,
+        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
