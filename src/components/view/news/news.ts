@@ -1,5 +1,4 @@
 import type { Article } from '../../../types/api.types';
-// @ts-expect-error: CSS imports have no TS type definitions
 import './news.css';
 
 class News {

@@ -1,6 +1,5 @@
 import { isSource } from '../../../utils/apiGuards';
 import type { Source } from '../../../types/api.types';
-// @ts-expect-error: CSS imports have no TS type definitions
 import './sources.css';
 
 class Sources {

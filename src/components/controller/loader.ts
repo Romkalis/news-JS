@@ -2,7 +2,6 @@ type QueryParams = {
     apiKey: string;
     sources?: string;
 };
-// type QueryParams = Record<string, string>;
 type RequestOptions = {
     sources?: string;
 };
@@ -13,8 +12,8 @@ type RequestConfig = {
 type ResponseCallback = (data: unknown) => void;
 
 class Loader {
-    private baseLink: string;
-    private options: QueryParams;
+    private readonly baseLink: string;
+    private readonly options: QueryParams;
 
     constructor(baseLink: string, options: QueryParams) {
         this.baseLink = baseLink;
@@ -52,19 +51,14 @@ class Loader {
         }
 
         return url + param.toString();
-        // Object.keys(urlOptions).forEach((key) => {
-        //     url += `${key}=${urlOptions[key]}&`;
-        // });
-
-        // return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: ResponseCallback, options = {}): void {
+    load(method: string, endpoint: string, callback: ResponseCallback, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => res.json())
+            .then((res): Promise<unknown> => res.json())
             .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .catch((err: unknown) => console.error(err));
     }
 }
 

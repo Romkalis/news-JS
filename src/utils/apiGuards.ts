@@ -1,4 +1,4 @@
-import type { Source, SourceResponce, Article, ArticleResponce, ArticleSource } from '../types/api.types';
+import type { Source, SourcesResponse, Article, ArticlesResponse, ArticleSource } from '../types/api.types';
 
 function isRecord(val: unknown): val is Record<string, unknown> {
     return typeof val === 'object' && val !== null;
@@ -8,10 +8,7 @@ export function isSource(val: unknown): val is Source {
     return isRecord(val) && typeof val.id === 'string' && typeof val.name === 'string';
 }
 
-export function isSourcesResponse(val: unknown): val is SourceResponce {
-    return isRecord(val) && val.status === 'ok' && Array.isArray(val.sources) && val.sources.every(isSource);
-}
-export function isSourceResponce(val: unknown): val is SourceResponce {
+export function isSourcesResponse(val: unknown): val is SourcesResponse {
     return isRecord(val) && val.status === 'ok' && Array.isArray(val.sources) && val.sources.every(isSource);
 }
 
@@ -35,7 +32,7 @@ export function isArticle(data: unknown): data is Article {
     );
 }
 
-export function isArticlesResponse(value: unknown): value is ArticleResponce {
+export function isArticlesResponse(value: unknown): value is ArticlesResponse {
     return (
         isRecord(value) &&
         value.status === 'ok' &&

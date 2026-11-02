@@ -2,7 +2,7 @@ export interface Source {
     id: string;
     name: string;
 }
-export interface SourceResponce {
+export interface SourcesResponse {
     status: 'ok';
     sources: Source[];
 }
@@ -22,7 +22,7 @@ export interface Article {
     publishedAt: string;
 }
 
-export interface ArticleResponce {
+export interface ArticlesResponse {
     status: 'ok';
     totalResults: number;
     articles: Article[];
