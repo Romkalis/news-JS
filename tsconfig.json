@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        // File Layout
+        // "rootDir": "./src",
+        // "outDir": "./dist",
+
+        "module": "nodenext",
+        "target": "es2020",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "types": [],
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+
+        // Recommended Options
+        "strict": true,
+        "verbatimModuleSyntax": true,
+        "isolatedModules": true,
+        "noImplicitAny": true,
+        "noUncheckedSideEffectImports": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "moduleDetection": "force",
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}
