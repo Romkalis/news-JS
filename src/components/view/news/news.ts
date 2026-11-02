@@ -44,7 +44,7 @@ class News {
 
             if (idx % 2) newsItem.classList.add('alt');
 
-            photo.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+            photo.style.backgroundImage = `url(${item.urlToImage || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22500%22%3E%3Cpath fill=%22%23243244%22 d=%22M0 0h800v500H0z%22/%3E%3C/svg%3E'})`;
             author.textContent = item.author || item.source.name;
             date.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
 

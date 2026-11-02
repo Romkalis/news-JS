@@ -1,35 +1,58 @@
+* {
+    box-sizing: border-box;
+}
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+    margin: 0;
+    min-width: 320px;
+    color: #eef2f8;
+    background: #111923;
+    font-family: Arial, sans-serif;
 }
-
-header {
-    padding: 10px 30px;
-}
-
-header h1 {
-    font-size: 40px;
-    font-weight: 800;
-}
-
+header,
+main,
 footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: min(1120px, 100% - 32px);
+    margin-inline: auto;
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
+header {
+    padding-block: 48px 28px;
+    border-bottom: 1px solid #334153;
+}
+header h1 {
+    margin: 8px 0 16px;
+    font-size: clamp(36px, 7vw, 72px);
+    letter-spacing: -0.06em;
+}
+header h1 span,
+.eyebrow {
+    color: #8ae0c4;
+}
+header p {
+    color: #b9c6d6;
+    line-height: 1.6;
+}
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+}
+footer {
+    padding-block: 36px;
+    color: #b9c6d6;
     text-align: center;
 }
-footer .copyright a {
-    color: #444;
+footer a {
+    color: #8ae0c4;
 }
-footer .copyright a:hover {
-    color: #555;
+:focus-visible {
+    outline: 3px solid #ffcf70;
+    outline-offset: 4px;
 }
-footer .copyright:before {
-    content: '©';
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        transform: none !important;
+    }
 }

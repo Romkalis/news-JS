@@ -37,7 +37,7 @@ class Sources {
             fragment.append(sourceClone);
         });
 
-        sourcesContainer.append(fragment);
+        sourcesContainer.replaceChildren(fragment);
     }
 }
 

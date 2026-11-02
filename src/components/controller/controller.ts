@@ -29,6 +29,9 @@ class AppController extends AppLoader {
                 }
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
+                    newsContainer.querySelectorAll('.source__item').forEach((source) => {
+                        source.setAttribute('aria-pressed', String(source === target));
+                    });
                     super.getResp(
                         {
                             endpoint: 'everything',

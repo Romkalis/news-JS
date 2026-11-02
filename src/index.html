@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,9 @@
     </head>
     <body>
         <header>
-            <h1>News Portal</h1>
+            <p class="eyebrow">YOUR DAILY PERSPECTIVE</p>
+            <h1>News Portal<span>.</span></h1>
+            <p>Choose a source. Discover the stories that matter.</p>
         </header>
         <main>
             <div class="sources buttons"></div>
@@ -19,9 +21,9 @@
         </footer>
 
         <template id="sourceItemTemp">
-            <div class="source__item">
+            <button type="button" class="source__item" aria-pressed="false">
                 <span class="source__item-name"></span>
-            </div>
+            </button>
         </template>
 
         <template id="newsItemTemp">
