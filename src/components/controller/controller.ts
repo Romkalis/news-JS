@@ -1,3 +1,4 @@
+import { ApiEndpoint } from '../../types/api.enums';
 import AppLoader from './appLoader';
 
 type Callback = (data: unknown) => void;
@@ -6,7 +7,7 @@ class AppController extends AppLoader {
     getSources(callback: Callback): void {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: ApiEndpoint.Sources,
             },
             callback
         );
@@ -31,7 +32,7 @@ class AppController extends AppLoader {
                     newsContainer.setAttribute('data-source', sourceId);
                     super.getResp(
                         {
-                            endpoint: 'everything',
+                            endpoint: ApiEndpoint.Everything,
                             options: {
                                 sources: sourceId,
                             },

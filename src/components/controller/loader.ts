@@ -1,21 +1,22 @@
+import { ApiEndpoint } from '../../types/api.enums';
+
 type QueryParams = {
     apiKey: string;
-    sources?: string;
+    sources: string;
 };
-type RequestOptions = {
-    sources?: string;
-};
+type RequestOptions = Partial<Pick<QueryParams, 'sources'>>;
+type LoaderOptions = Readonly<Pick<QueryParams, 'apiKey'>>;
 type RequestConfig = {
-    endpoint: string;
+    endpoint: ApiEndpoint;
     options?: RequestOptions;
 };
 type ResponseCallback = (data: unknown) => void;
 
 class Loader {
     private readonly baseLink: string;
-    private readonly options: QueryParams;
+    private readonly options: LoaderOptions;
 
-    constructor(baseLink: string, options: QueryParams) {
+    constructor(baseLink: string, options: LoaderOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -39,8 +40,8 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: RequestOptions, endpoint: string): string {
-        const urlOptions: QueryParams = { ...this.options, ...options };
+    makeUrl(options: RequestOptions, endpoint: ApiEndpoint): string {
+        const urlOptions: LoaderOptions & RequestOptions = { ...this.options, ...options };
         const url = `${this.baseLink}${endpoint}?`;
         const param = new URLSearchParams({
             apiKey: urlOptions.apiKey,
@@ -53,7 +54,7 @@ class Loader {
         return url + param.toString();
     }
 
-    load(method: string, endpoint: string, callback: ResponseCallback, options: RequestOptions = {}): void {
+    load(method: string, endpoint: ApiEndpoint, callback: ResponseCallback, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res): Promise<unknown> => res.json())

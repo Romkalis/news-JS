@@ -4,12 +4,16 @@ function isRecord(val: unknown): val is Record<string, unknown> {
     return typeof val === 'object' && val !== null;
 }
 
+function isArrayOf<T>(value: unknown, guard: (item: unknown) => item is T): value is T[] {
+    return Array.isArray(value) && value.every((item: unknown) => guard(item));
+}
+
 export function isSource(val: unknown): val is Source {
     return isRecord(val) && typeof val.id === 'string' && typeof val.name === 'string';
 }
 
 export function isSourcesResponse(val: unknown): val is SourcesResponse {
-    return isRecord(val) && val.status === 'ok' && Array.isArray(val.sources) && val.sources.every(isSource);
+    return isRecord(val) && val.status === 'ok' && isArrayOf(val.sources, isSource);
 }
 
 function isArticleSource(val: unknown): val is ArticleSource {
@@ -37,7 +41,6 @@ export function isArticlesResponse(value: unknown): value is ArticlesResponse {
         isRecord(value) &&
         value.status === 'ok' &&
         typeof value.totalResults === 'number' &&
-        Array.isArray(value.articles) &&
-        value.articles.every(isArticle)
+        isArrayOf(value.articles, isArticle)
     );
 }
